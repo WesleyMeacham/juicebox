@@ -1,11 +1,9 @@
 require("dotenv").config();
 const { Client } = require("pg");
 
-const client = new Client({
-	password: "t4lld4rkN0illyc0ff33",
-	user: "postgres",
-	database: "juiceboxdev",
-});
+const client = new Client(
+	process.env.DATABASE_URL || "postgres://localhost:5432/juicebox-dev"
+);
 
 // User.
 async function createUser({ username, password, name, location }) {
